@@ -115,10 +115,10 @@ TEDtalk_t * tedtalkCopy( const TEDtalk_t * m) {
 
     d = malloc(sizeof(TEDtalk_t));
 
-    d->speaker = malloc(sizeof(m->speaker) + 1);
+    d->speaker = malloc(strlen(m->speaker) + 1);
     strcpy(d->speaker, m->speaker);
 
-    d->title = malloc(sizeof(m->title) + 1);
+    d->title = malloc(strlen(m->title) + 1);
     strcpy(d->title, m->title);
 
     if (NULL != m->lastPlayed) {

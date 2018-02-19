@@ -30,7 +30,7 @@ int main( void ) {
     atime = newEventTime( 6, 30, "pm" ) ;
 
     printf( "Starting tedtalk tests...\n" ) ;
-    // creates a new TEDtalk titled "Do schools..." by "Kev Robin..."
+    // creates a new TEDtalk titled "Do schools..." by "Ken Robin..."
     talk1 = newTEDtalk( "Do schools kill creativity?", "Ken Robinson" ) ;
     printf( "First tedtalk initialized...\n" ) ;
 
@@ -72,11 +72,12 @@ int main( void ) {
     free( sglp ) ;
 
     // deletes our talk1 (commented out for the time being)
-    // tedtalkDelete( talk1 ) ;
+    tedtalkDelete( talk1 ) ;
+    free( talk1 ) ;
 
     // I mean I guess... definitely easier to do it a different way than this...
-    speaker = malloc( sizeof( "Amy Cuddy" ) + 1 ) ;
-    title = malloc( sizeof( "Your body shapes who you are" ) + 1 ) ;
+    speaker = malloc( strlen( "Amy Cuddy" ) + 1 ) ;
+    title = malloc( strlen( "Your body shapes who you are" ) + 1 ) ;
     strcpy( speaker, "Amy Cuddy" ) ;
     strcpy( title, "Your body shapes who you are" ) ;
     // construts talk2 with title and speaker
