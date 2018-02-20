@@ -19,7 +19,7 @@
 /// @returns errorCode  error Code; EXIT_SUCCESS if no error
 
 int main( void ) {
-    //the four items we will use
+    //the four ted talk related variables we will use
     EventTime_t * atime = NULL ;
     TEDtalk_t * talk1 = NULL ;
     TEDtalk_t * talk2 = NULL ;
