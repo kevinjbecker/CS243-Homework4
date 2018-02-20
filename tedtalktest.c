@@ -2,7 +2,7 @@
 // 
 // Description: test the tedtalk.c module
 // @author      RIT CS Instructors
-// 
+// @author      kjkb2503 : Kevin Becker
 // // // // // // // // // // // // // // // // // // // // // // // // 
 
 //
@@ -48,12 +48,16 @@ int main( void ) {
     // we never free mstr, prolly not too good)
     char * mstr = tedtalkToString( talk1 ) ;
     printf( "Otherwise... %s\n", mstr ) ;
+    // frees mstr from dynamic memory
+    free( mstr );
 
     // plays talk1 at atime
     tedtalkPlay( talk1, atime ) ;
     // gets our mstr again and prints it
     mstr = tedtalkToString( talk1 ) ;
     printf( "After playing the tedtalk... \n\t%s\n", mstr ) ;
+    // frees mstr from dynamic memory
+    free( mstr );
 
     // gets a pointer to the last time talk1 was played
     EventTime_t * glp = tedtalkGetLastPlayed( talk1 ) ;
@@ -74,7 +78,7 @@ int main( void ) {
 
     // deletes our talk1
     tedtalkDelete( talk1 ) ;
-    // frees talk1 from dynamic memory (var reused later, prevents memory leak)
+    // frees talk1 from dynamic memory
     free( talk1 );
 
 
@@ -90,6 +94,8 @@ int main( void ) {
     // gets string representation of talk2 and prints it
     mstr = tedtalkToString( talk2 ) ;
     printf( "The talk2 is: \n\t%s\n", mstr ) ;
+    // frees mstr from dynamic memory
+    free( mstr );
 
 
     // copies talk2 into talk1
@@ -97,13 +103,19 @@ int main( void ) {
     // gets the string representation of talk1 and prints it
     mstr = tedtalkToString( talk1 ) ;
     printf( "The copy of talk2 tedtalk is: \n\t%s \n", mstr ) ;
+    // frees mstr from dynamic memory
+    free( mstr );
     // deletes talk2
     tedtalkDelete( talk2 ) ;
+    // frees talk2 from dynamic memory
+    free( talk2 );
     // gets string representationof talk1 again and prints it (to show it was
     // properly copied over)
     mstr = tedtalkToString( talk1 ) ;
     printf( "After deleting the original talk2, the copy of talk2 "
             "tedtalk is ... \n\t%s\n", mstr ) ;
+    // frees mstr from dynamic memory
+    free( mstr );
 
     // creates a new char pointer named pstr
     char * pstr ;
@@ -118,8 +130,10 @@ int main( void ) {
         // prints talk3 and talk1
         printf( "The talk3 tedtalk \n\t%s\n"
                 "    is the same as this tedtalk \n\t%s\n", pstr, mstr ) ;
-        // frees pstr
+        // frees pstr from dynamic memory
         free( pstr ) ;
+        // frees mstr from dynamic memory
+        free( mstr );
     } else {
         // if talk1 and talk3 aren't equal we report it here
         printf( "ERROR: tedtalkCopy() failure!\n" ) ;
@@ -127,11 +141,11 @@ int main( void ) {
 
     // deletes talk3
     tedtalkDelete( talk3 ) ;
-    // frees talk3 from dynamic memory (var reused later, prevents memory leak)
+    // frees talk3 from dynamic memory
     free( talk3 );
     // deltes talk1
     tedtalkDelete( talk1 ) ;
-    // frees talk1 from dynamic memory (var reused later, prevents memory leak)
+    // frees talk1 from dynamic memory
     free( talk1 );
 
     // creates a new TED talk and puts it in talk3
@@ -139,13 +153,15 @@ int main( void ) {
     // gets string representation of talk3 and prints it
     mstr = tedtalkToString( talk3 ) ;
     printf( "The current talk3 tedtalk is: \n\t%s\n", mstr ) ;
+    // frees mstr from dynamic memory
+    free( mstr );
 
     // plays talk3 at 4:42 am (newEventTime uses dynamic mem. never cleared)
     tedtalkPlay( talk3, newEventTime(4, 42, "am") ) ;
     // gets new string representation of talk3 and prints it
     mstr = tedtalkToString( talk3 ) ;
     printf( "The current talk3 tedtalk is: \n\t%s\n", mstr ) ;
-    // frees mstr
+    // frees mstr from dynamic memory
     free( mstr ) ;
 
     // deletes talk3

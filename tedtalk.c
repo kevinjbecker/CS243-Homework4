@@ -2,7 +2,7 @@
 // 
 // Description: Representation of a TEDtalk
 // @author      RIT CS Instructors
-// 
+// @author      kjb2503 : Kevin Becker
 // // // // // // // // // // // // // // // // // // // // // // // // 
 
 //
