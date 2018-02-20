@@ -71,9 +71,9 @@ int main( void ) {
     timeDelete( glp ) ;
     free( sglp ) ;
 
-    // deletes our talk1 (commented out for the time being)
+    // deletes our talk1
     tedtalkDelete( talk1 ) ;
-    free( talk1 ) ;
+
 
     // I mean I guess... definitely easier to do it a different way than this...
     speaker = malloc( strlen( "Amy Cuddy" ) + 1 ) ;
@@ -116,17 +116,17 @@ int main( void ) {
         // prints talk3 and talk1
         printf( "The talk3 tedtalk \n\t%s\n"
                 "    is the same as this tedtalk \n\t%s\n", pstr, mstr ) ;
-        // frees pstr (commented out for the time being)
-        //free( pstr ) ;
+        // frees pstr
+        free( pstr ) ;
     } else {
         // if talk1 and talk3 aren't equal we report it here
         printf( "ERROR: tedtalkCopy() failure!\n" ) ;
     }
 
-    // deletes talk3 (commented out temp.)
-    //tedtalkDelete( talk3 ) ;
-    // deltes talk1 (commented out temp.)
-    //tedtalkDelete( talk1 ) ;
+    // deletes talk3
+    tedtalkDelete( talk3 ) ;
+    // deltes talk1
+    tedtalkDelete( talk1 ) ;
 
     // creates a new TED talk and puts it in talk3
     talk3 = newTEDtalk( "How great leaders inspire action", "Simon Sinek" ) ;
@@ -139,11 +139,8 @@ int main( void ) {
     // gets new string representation of talk3 and prints it
     mstr = tedtalkToString( talk3 ) ;
     printf( "The current talk3 tedtalk is: \n\t%s\n", mstr ) ;
-    // frees mstr (commented out temporarily)
-    //free( mstr ) ;
-
-    // deletes talk1... again? (commenting it out for now)
-    tedtalkDelete( talk1 ) ;
+    // frees mstr
+    free( mstr ) ;
 
     // deletes talk3
     tedtalkDelete( talk3 ) ;
