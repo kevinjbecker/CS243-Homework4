@@ -31,6 +31,7 @@ int main( void ) {
 
     printf( "Starting tedtalk tests...\n" ) ;
     // creates a new TEDtalk titled "Do schools..." by "Ken Robin..."
+    // talk1 is not freed from memory, must add before resetting it
     talk1 = newTEDtalk( "Do schools kill creativity?", "Ken Robinson" ) ;
     printf( "First tedtalk initialized...\n" ) ;
 
@@ -73,9 +74,10 @@ int main( void ) {
 
     // deletes our talk1
     tedtalkDelete( talk1 ) ;
+    // frees talk1 from dynamic memory (var reused later, prevents memory leak)
+    free( talk1 );
 
 
-    // I mean I guess... definitely easier to do it a different way than this...
     speaker = malloc( strlen( "Amy Cuddy" ) + 1 ) ;
     title = malloc( strlen( "Your body shapes who you are" ) + 1 ) ;
     strcpy( speaker, "Amy Cuddy" ) ;
@@ -125,8 +127,12 @@ int main( void ) {
 
     // deletes talk3
     tedtalkDelete( talk3 ) ;
+    // frees talk3 from dynamic memory (var reused later, prevents memory leak)
+    free( talk3 );
     // deltes talk1
     tedtalkDelete( talk1 ) ;
+    // frees talk1 from dynamic memory (var reused later, prevents memory leak)
+    free( talk1 );
 
     // creates a new TED talk and puts it in talk3
     talk3 = newTEDtalk( "How great leaders inspire action", "Simon Sinek" ) ;
@@ -144,6 +150,8 @@ int main( void ) {
 
     // deletes talk3
     tedtalkDelete( talk3 ) ;
+    // frees talk3 from dynamic memory
+    free( talk3 );
 
     return EXIT_SUCCESS ;
 }
